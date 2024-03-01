@@ -5,7 +5,7 @@ if status is-interactive
   abbr -a -- pbpaste 'xclip -selection clipboard -o'
   abbr -a -- kc kubectl
   abbr -a -- tf terraform
-  abbr -a -- tjp --set-cursor 'tmux join-pane -s% -t'
+  abbr -a --set-cursor -- tjp 'tmux join-pane -s% -t'
 
   abbr -a -- gco 'git checkout'
   abbr -a -- gitdelta 'git -c \'core.pager=delta --light -s\''
