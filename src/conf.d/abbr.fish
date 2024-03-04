@@ -10,4 +10,17 @@ if status is-interactive
   abbr -a -- gitdelta 'git -c \'core.pager=delta --light -s\''
   abbr -a -- gitgraph 'git log --graph --all --decorate --oneline --color'
   abbr -a -- gitgraphfzf "git log --graph --all --decorate --oneline --color | fzf --multi --tiebreak=index --layout reverse --ansi --no-sort --preview 'echo {} | rg --only-matching --max-count 1 '[0-9a-f]\\\\{7\\\\}' | xargs -I % sh -c \'git show --color=always \\%\'' | rg '[0-9a-f]{7}' --only-matching --max-count 1"
+
+  abbr -a --set-cursor -- gotemp 'bash -c \'cat <<EOF > temp.go
+package main
+
+import "fmt"
+func main() {
+    %
+}
+EOF
+go run temp.go
+rm temp.go\'
+'
+
 end
