@@ -4,6 +4,7 @@ if status is-interactive
   abbr -a -- pbcopy 'xclip -selection clipboard'
   abbr -a -- pbpaste 'xclip -selection clipboard -o'
   abbr -a -- kc kubectl
+  abbr -a -- ic istioctl
   abbr -a -- tf terraform
 
   abbr -a -- gco 'git checkout'
