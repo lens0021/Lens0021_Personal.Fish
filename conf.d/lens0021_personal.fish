@@ -1,8 +1,14 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
 
-  abbr -a -- pbcopy 'xclip -selection clipboard'
-  abbr -a -- pbpaste 'xclip -selection clipboard -o'
+  if set -q TERMUX_VERSION
+    tide configure --auto --style=Lean --prompt_colors='True color' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Compact --icons='Many icons' --transient=No
+  end
+
+  if ! command -v pbcopy >/dev/null
+    abbr -a -- pbcopy 'xclip -selection clipboard'
+    abbr -a -- pbpaste 'xclip -selection clipboard -o'
+  end
   abbr -a -- kc kubectl
   abbr -a -- tf terraform
 
