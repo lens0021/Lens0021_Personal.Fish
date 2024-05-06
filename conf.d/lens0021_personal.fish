@@ -27,6 +27,9 @@ rm temp.go\'
 '
 
 end
+if status is-interactive
+    set -q LESS || set -gx LESS '--mouse --wheel-lines=3'
+end
 if status is-login
   set -gx PATH $PATH $HOME/.local/bin
   set -gx PATH $PATH $HOME/go/bin
