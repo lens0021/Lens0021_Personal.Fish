@@ -3,7 +3,7 @@ if status is-interactive
   if functions -q fzf_configure_bindings
     # Change key bindings for fzf.fish
     # https://github.com/PatrickF1/fzf.fish/blob/main/functions/fzf_configure_bindings.fish
-    fzf_configure_bindings --variables= --directory=\cv --history=\e\cr
+    fzf_configure_bindings --variables= --directory=\cv
   end
 
   if test -e ~/.asdf/asdf.fish
