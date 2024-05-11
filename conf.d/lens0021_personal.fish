@@ -2,8 +2,13 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     if ! command -v pbcopy >/dev/null
-        abbr -a -- pbcopy 'xclip -selection clipboard'
-        abbr -a -- pbpaste 'xclip -selection clipboard -o'
+        if command -v termux-clipboard-set
+            abbr -a -- pbcopy termux-clipboard-set
+            abbr -a -- pbpaste termux-clipboard-get
+        else if command -v xclip
+            abbr -a -- pbcopy 'xclip -selection clipboard'
+            abbr -a -- pbpaste 'xclip -selection clipboard -o'
+        end
     end
     abbr -a -- kc kubectl
     abbr -a -- ic istioctl
