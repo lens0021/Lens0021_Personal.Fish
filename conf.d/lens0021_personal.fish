@@ -2,10 +2,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     if ! command -v pbcopy >/dev/null
-        if command -v termux-clipboard-set
+        if command -v termux-clipboard-set >/dev/null
             abbr -a -- pbcopy termux-clipboard-set
             abbr -a -- pbpaste termux-clipboard-get
-        else if command -v xclip
+        else if command -v xclip >/dev/null
             abbr -a -- pbcopy 'xclip -selection clipboard'
             abbr -a -- pbpaste 'xclip -selection clipboard -o'
         end
