@@ -37,7 +37,7 @@ if status is-interactive
     set -x EDITOR hx
     set -x GPG_TTY (tty)
     set -x KUBE_EDITOR hx
-    set -x PAGER 'less -r'
+    set -x PAGER 'less -rXF'
 end
 if status is-login
     set -gx PATH $PATH $HOME/.local/bin
