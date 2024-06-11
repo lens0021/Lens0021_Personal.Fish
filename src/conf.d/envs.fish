@@ -3,7 +3,7 @@ if status is-interactive
     set -x EDITOR hx
     set -x GPG_TTY (tty)
     set -x HELM_DIFF_COLOR true
-    set -x HELM_DIFF_TPL dyff
+    set -x HELM_DIFF_OUTPUT dyff
     set -x KUBE_EDITOR hx
     set -x PAGER 'less -rXF'
 end
