@@ -34,7 +34,7 @@ rm temp.go\'
 end
 if status is-interactive
 
-    bind --mode default \cL lazygit
+    bind --mode default \eL lazygit
 
 end
 if status is-interactive
