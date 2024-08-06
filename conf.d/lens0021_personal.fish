@@ -33,6 +33,11 @@ rm temp.go\'
 
 end
 if status is-interactive
+
+    bind --mode default \e\cl lazygit
+
+end
+if status is-interactive
     set -q LESS || set -x LESS '--mouse --wheel-lines=3'
     set -x EDITOR hx
     set -x GPG_TTY (tty)
