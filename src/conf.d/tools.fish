@@ -20,4 +20,14 @@ if status is-interactive
         # end
     end
 
+    # https://github.com/yazi-rs/yazi-rs.github.io/blob/91959553ff7cc7720d8aedbd35e7adb01a7f8325/docs/quick-start.md?plain=1#L40-L49
+    function y
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            builtin cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
+    end
+
 end
