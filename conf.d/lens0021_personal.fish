@@ -32,7 +32,7 @@ rm temp.go\'
 '
 
     abbr -a -- fw-aws-sso 'aws --profile fw configure sso'
-    abbr -a -- fw-ec2 'aws --profile fw --region ap-northeast-1 ec2 describe-instances --query "Reservations[*].Instances[*].[to_string(Tags), State.Name, PrivateIpAddress, LaunchTime]" --output table'
+    abbr -a -- fw-ec2 'aws --profile fw --region ap-northeast-1 ec2 describe-instances --query "Reservations[*].Instances[*].[to_string(Tags), State.Name, InstanceId, PrivateIpAddress, LaunchTime]" --output table'
 
 end
 if status is-interactive
