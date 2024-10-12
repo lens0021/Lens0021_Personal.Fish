@@ -22,6 +22,7 @@ if status is-interactive
     abbr -a --set-cursor -- gotemp 'bash -c \'cat <<EOF > temp.go
 
     abbr -a -- fw-aws-sso 'aws --profile fw configure sso'
+    abbr -a -- fw-ec2 'aws --profile fw --region ap-northeast-1 ec2 describe-instances --query "Reservations[*].Instances[*].[to_string(Tags), State.Name, PrivateIpAddress, LaunchTime]" --output table'
 package main
 
 import "fmt"
