@@ -62,6 +62,7 @@ if status is-login
     set -gx PATH $PATH $HOME/.composer/vendor/bin
     set -gx PATH $PATH $HOME/bin
     set -gx PATH $PATH $HOME/.cargo/bin/
+    set -gx PATH $PATH $HOME/.bun/bin
     if set -q KREW_ROOT
         set -gx PATH $PATH $KREW_ROOT/bin
     else if test -d $HOME/.krew/bin
@@ -106,12 +107,23 @@ if status is-interactive
     end
 
     function Y
-        set tmp (mktemp -t "yazi-cwd.XXXXXX")
-        YAZI_CONFIG_HOME=~/.config/abyazelix/yazi/sidebar yazi $argv --cwd-file="$tmp"
+        set yazi_config_home "$YAZI_CONFIG_HOME"
+        if test -z "$yazi_config_home"
+            set yazi_config_home ~/.config/yazi/
+        end
+
+        set temp_yazi_config_home (mktemp -d -t "yazi-cwd.XXXXXX")
+        if test -d $yazi_config_home
+            rsync -a $yazi_config_home $temp_yazi_config_home
+        end
+        rsync -a ~/.config/abyazelix/yazi/sidebar/ $temp_yazi_config_home
+
+        set tmp (mktemp -t "yazi-cwd.XXXXXX" --tmpdir="$temp_yazi_config_home")
+        YAZI_CONFIG_HOME=$temp_yazi_config_home yazi $argv --cwd-file="$tmp"
         if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
             builtin cd -- "$cwd"
         end
-        rm -f -- "$tmp"
+        rm -rf -- "$temp_yazi_config_home"
     end
 
 end
