@@ -50,4 +50,8 @@ if status is-interactive
         rm -rf -- "$temp_yazi_config_home"
     end
 
+    if type zoxide &>/dev/null
+        zoxide init fish | source
+    end
+
 end
