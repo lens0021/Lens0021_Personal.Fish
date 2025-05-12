@@ -10,6 +10,7 @@ if status is-interactive
             abbr -a -- pbpaste 'xclip -selection clipboard -o'
         end
     end
+    abbr -a -- zz 'z (zoxide query -i)'
     abbr -a -- kc kubectl
     abbr -a -- ic istioctl
     abbr -a -- tf terraform
