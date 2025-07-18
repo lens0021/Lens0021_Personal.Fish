@@ -133,7 +133,7 @@ if status is-interactive
         zoxide init fish | source
     end
 
-    if type starship &>/dev/null && set -q LENS0021_STARSHIP_IS_ON
+    if type starship &>/dev/null
         starship init fish | source
     end
 end
