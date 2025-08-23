@@ -32,7 +32,7 @@ go run temp.go
 rm temp.go\'
 '
 
-    abbr -a -- fw-aws-sso 'aws --profile fw configure sso'
+    abbr -a -- fw-aws-sso 'aws --profile fw configure sso # https://femiwiki.awsapps.com/start/# ap-northeast-2'
     abbr -a -- fw-ec2 'aws --profile fw --region ap-northeast-1 ec2 describe-instances --query "Reservations[*].Instances[*].[to_string(Tags), State.Name, InstanceId, PrivateIpAddress, LaunchTime]" --output table'
 
 end
