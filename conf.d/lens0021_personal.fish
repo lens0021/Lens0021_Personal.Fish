@@ -136,4 +136,10 @@ if status is-interactive
     if type starship &>/dev/null
         starship init fish | source
     end
+
+    if set -q KREW_ROOT
+        set -gx PATH $PATH $KREW_ROOT/.krew/bin
+    else
+        set -gx PATH $PATH $HOME/.krew/bin
+    end
 end
