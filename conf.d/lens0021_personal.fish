@@ -60,6 +60,16 @@ if status is-interactive
     set -x TF_PLUGIN_CACHE_DIR "$HOME/.terraform.d/plugin-cache"
 end
 if status is-login
+    if test -z $ASDF_DATA_DIR
+        set _asdf_shims "$HOME/.asdf/shims"
+    else
+        set _asdf_shims "$ASDF_DATA_DIR/shims"
+    end
+    if not contains $_asdf_shims $PATH
+        set -gx --prepend PATH $_asdf_shims
+    end
+    set --erase _asdf_shims
+
     set -gx PATH $PATH $HOME/.local/bin
     set -gx PATH $PATH $HOME/go/bin
     set -gx PATH $PATH $HOME/.composer/vendor/bin
