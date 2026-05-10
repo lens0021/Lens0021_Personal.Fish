@@ -120,26 +120,6 @@ if status is-interactive
         rm -f -- "$tmp"
     end
 
-    function Y
-        set yazi_config_home "$YAZI_CONFIG_HOME"
-        if test -z "$yazi_config_home"
-            set yazi_config_home ~/.config/yazi/
-        end
-
-        set temp_yazi_config_home (mktemp -d -t "yazi-cwd.XXXXXX")
-        if test -d $yazi_config_home
-            rsync -a $yazi_config_home $temp_yazi_config_home
-        end
-        rsync -a ~/.config/abyazelix/yazi/sidebar/ $temp_yazi_config_home
-
-        set tmp (mktemp -t "yazi-cwd.XXXXXX" --tmpdir="$temp_yazi_config_home")
-        YAZI_CONFIG_HOME=$temp_yazi_config_home yazi $argv --cwd-file="$tmp"
-        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-            builtin cd -- "$cwd"
-        end
-        rm -rf -- "$temp_yazi_config_home"
-    end
-
     if type zoxide &>/dev/null
         zoxide init fish | source
     end
